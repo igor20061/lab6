@@ -1,306 +1,287 @@
-<!--
-    Cache.java - документация
-    Файл определяет пользовательскую аннотацию @Cache для настройки кеширования на уровне класса.
--->
-
-<!-- Аннотация: @Cache -->
-<!--
-    Цель: класс (ElementType.TYPE)
-    Удержание: время выполнения (RetentionPolicy.RUNTIME)
-    Назначение: объявляет один или несколько имен кешей, связывая класс с определенными кешами.
-    Атрибуты:
-        - value: массив строк, имена кешей (по умолчанию пустой массив).
-    Пример: @Cache({"users", "orders"})
--->
-
-<!--
-    CacheDemo.java - документация
-    Пример класса, демонстрирующий использование аннотации @Cache.
--->
-
-<!-- Класс: CacheDemo -->
-<!--
-    Назначение: демонстрационный класс для аннотации @Cache.
-    Аннотация: @Cache({"users", "orders"})
-    Описание: класс связан с двумя кешами: "users" и "orders".
--->
-
-<!--
-    CacheHandler.java - документация
-    Утилитный класс для обработки аннотации @Cache с помощью рефлексии.
--->
-
-<!-- Класс: CacheHandler -->
-<!--
-    Назначение: предоставляет статический метод для вывода информации об аннотации @Cache.
--->
-
-<!-- Метод: printCache -->
-<!--
-    Назначение: выводит список имен кешей из аннотации @Cache указанного класса.
-    Параметры:
-        - cls: Class<?>, класс для проверки.
-    Логика:
-        1. Получает экземпляр аннотации @Cache класса.
-        2. Если аннотация отсутствует или массив value пуст, выводит "Кеш пуст".
-        3. Иначе выводит каждый элемент массива в формате "Кеш: {имя_кеша}".
--->
-
-<!--
-    Default.java - документация
-    Файл определяет пользовательскую аннотацию @Default для указания типа по умолчанию.
--->
-
-<!-- Аннотация: @Default -->
-<!--
-    Цель: класс и поле (ElementType.TYPE, ElementType.FIELD)
-    Удержание: время выполнения (RetentionPolicy.RUNTIME)
-    Назначение: указывает тип по умолчанию для класса или поля.
-    Атрибуты:
-        - value: Class<?>, тип по умолчанию.
-    Пример: @Default(String.class)
--->
-
-<!--
-    DefaultDemo.java - документация
-    Пример класса, демонстрирующий использование аннотации @Default.
--->
-
-<!-- Класс: DefaultDemo -->
-<!--
-    Назначение: демонстрационный класс для аннотации @Default.
-    Аннотация: @Default(String.class)
-    Описание: класс указывает String.class в качестве типа по умолчанию.
--->
-
-<!--
-    DefaultHandler.java - документация
-    Утилитный класс для обработки аннотации @Default с помощью рефлексии.
--->
-
-<!-- Класс: DefaultHandler -->
-<!--
-    Назначение: предоставляет статический метод для вывода информации об аннотации @Default.
--->
-
-<!-- Метод: printDefault -->
-<!--
-    Назначение: выводит имя класса по умолчанию из аннотации @Default указанного класса.
-    Параметры:
-        - cls: Class<?>, класс для проверки.
-    Логика:
-        1. Получает экземпляр аннотации @Default класса.
-        2. Если аннотация существует, выводит "Default класс: {имя_класса}".
--->
-
-<!--
-    Invoke.java - документация
-    Файл определяет пользовательскую аннотацию @Invoke для отметки методов.
--->
-
-<!-- Аннотация: @Invoke -->
-<!--
-    Цель: метод (ElementType.METHOD)
-    Удержание: время выполнения (RetentionPolicy.RUNTIME)
-    Назначение: отмечает метод для динамического вызова.
-    Пример: @Invoke
--->
-
-<!--
-    InvokeDemo.java - документация
-    Пример класса, демонстрирующий использование аннотации @Invoke и рефлексивный вызов.
--->
-
-<!-- Класс: InvokeDemo -->
-<!--
-    Назначение: демонстрационный класс с методом, отмеченным @Invoke, и логикой рефлексивного вызова.
--->
-
-<!-- Метод: hello -->
-<!--
-    Назначение: метод, отмеченный аннотацией @Invoke, выводит "Метод hello вызван".
-    Аннотация: @Invoke
--->
-
-<!-- Метод: test -->
-<!--
-    Назначение: обычный метод, выводит "Обычный метод".
--->
-
-<!-- Метод: run -->
-<!--
-    Назначение: статический метод, рефлексивно вызывает все методы объекта, отмеченные @Invoke.
-    Параметры:
-        - obj: Object, объект для проверки и вызова методов.
-    Логика:
-        1. Перебирает все объявленные методы класса объекта.
-        2. Если метод отмечен аннотацией @Invoke, вызывает его рефлексивно.
--->
-
-<!--
-    Mode.java - документация
-    Перечисление, определяющее две константы: YES и NO.
--->
-
-<!-- Перечисление: Mode -->
-<!--
-    Назначение: представляет режим для аннотации @ToString.
-    Константы:
-        - YES: да.
-        - NO: нет.
--->
-
-<!--
-    Person.java - документация
-    Пример класса, демонстрирующий использование аннотации @ToString на уровне класса и полей.
--->
-
-<!-- Класс: Person -->
-<!--
-    Назначение: демонстрационный класс для генерации строкового представления на основе аннотации @ToString.
-    Аннотация: @ToString (на уровне класса)
-    Описание: аннотация на уровне класса означает, что все поля по умолчанию участвуют в toString.
--->
-
-<!-- Поле: name -->
-<!--
-    Тип: String
-    Начальное значение: "Ivan"
-    Описание: по умолчанию участвует в toString.
--->
-
-<!-- Поле: password -->
-<!--
-    Тип: int
-    Начальное значение: 1234
-    Аннотация: @ToString(Mode.NO)
-    Описание: помечено как Mode.NO, не участвует в toString.
--->
-
-<!-- Поле: age -->
-<!--
-    Тип: int
-    Начальное значение: 20
-    Описание: по умолчанию участвует в toString.
--->
-
-<!-- Метод: buildToString -->
-<!--
-    Назначение: генерирует строковое представление объекта с использованием рефлексии и аннотации @ToString.
-    Возвращает: String в формате "Person{имя_поля=значение, ...}".
-    Логика:
-        1. Перебирает все поля класса.
-        2. Если поле не имеет аннотации @ToString или её значение Mode.YES, добавляет имя и значение поля в строку.
--->
-
-<!--
-    ToString.java - документация
-    Файл определяет пользовательскую аннотацию @ToString для контроля участия полей в toString.
--->
-
-<!-- Аннотация: @ToString -->
-<!--
-    Цель: класс и поле (ElementType.TYPE, ElementType.FIELD)
-    Удержание: время выполнения (RetentionPolicy.RUNTIME)
-    Назначение: указывает, должно ли поле или класс участвовать в генерации toString.
-    Атрибуты:
-        - value: перечисление Mode, по умолчанию Mode.YES.
-    Описание:
-        - На классе: задает поведение по умолчанию для всех полей.
-        - На поле: переопределяет поведение по умолчанию для конкретного поля.
--->
-
-<!--
-    Two.java - документация
-    Файл определяет пользовательскую аннотацию @Two с двумя атрибутами.
--->
-
-<!-- Аннотация: @Two -->
-<!--
-    Цель: класс (ElementType.TYPE)
-    Удержание: время выполнения (RetentionPolicy.RUNTIME)
-    Назначение: определяет аннотацию с двумя атрибутами.
-    Атрибуты:
-        - first: String, первый атрибут.
-        - second: int, второй атрибут.
-    Пример: @Two(first = "Hello", second = 10)
--->
-
-<!--
-    TwoDemo.java - документация
-    Пример класса, демонстрирующий использование аннотации @Two.
--->
-
-<!-- Класс: TwoDemo -->
-<!--
-    Назначение: демонстрационный класс для аннотации @Two.
-    Аннотация: @Two(first = "Hello", second = 10)
-    Описание: класс использует аннотацию @Two с указанными значениями атрибутов.
--->
-
-<!--
-    TwoHandler.java - документация
-    Утилитный класс для обработки аннотации @Two с помощью рефлексии.
--->
-
-<!-- Класс: TwoHandler -->
-<!--
-    Назначение: предоставляет статический метод для вывода информации об аннотации @Two.
--->
-
-<!-- Метод: printTwo -->
-<!--
-    Назначение: выводит значения атрибутов first и second из аннотации @Two указанного класса.
-    Параметры:
-        - cls: Class<?>, класс для проверки.
-    Логика:
-        1. Получает экземпляр аннотации @Two класса.
-        2. Если аннотация существует, выводит значения first и second.
--->
-
-<!--
-    Validate.java - документация
-    Файл определяет пользовательскую аннотацию @Validate для указания типов валидации.
--->
-
-<!-- Аннотация: @Validate -->
-<!--
-    Цель: класс и аннотация (ElementType.TYPE, ElementType.ANNOTATION_TYPE)
-    Удержание: время выполнения (RetentionPolicy.RUNTIME)
-    Назначение: объявляет один или несколько типов классов для валидации.
-    Атрибуты:
-        - value: массив Class<?>, типы классов для валидации.
-    Пример: @Validate({String.class, Integer.class})
--->
-
-<!--
-    ValidateDemo.java - документация
-    Пример класса, демонстрирующий использование аннотации @Validate.
--->
-
-<!-- Класс: ValidateDemo -->
-<!--
-    Назначение: демонстрационный класс для аннотации @Validate.
-    Аннотация: @Validate({String.class, Integer.class})
-    Описание: класс указывает типы String и Integer для валидации.
--->
-
-<!--
-    ValidateHandler.java - документация
-    Утилитный класс для обработки аннотации @Validate с помощью рефлексии.
--->
-
-<!-- Класс: ValidateHandler -->
-<!--
-    Назначение: предоставляет статический метод для вывода информации об аннотации @Validate.
--->
-
-<!-- Метод: printValidate -->
-<!--
-    Назначение: выводит список типов классов для валидации из аннотации @Validate указанного класса.
-    Параметры:
-        - cls: Class<?>, класс для проверки.
-    Логика:
-        1. Получает экземпляр аннотации @Validate класса.
-        2. Если аннотация существует, перебирает массив value и выводит "Проверяем: {имя_класса}".
--->
+<?xml version="1.0" encoding="UTF-8"?>
+<documentation>
+    <java-packages>
+        
+        <!-- ========== Аннотация @Cache ========== -->
+        <package name="cache.annotations">
+            <file name="Cache.java">
+                <description>Определяет пользовательскую аннотацию @Cache для настройки кеширования на уровне класса</description>
+                <annotation name="Cache">
+                    <target>TYPE (класс)</target>
+                    <retention>RUNTIME (время выполнения)</retention>
+                    <purpose>Связывает класс с одним или несколькими кешами</purpose>
+                    <attributes>
+                        <attribute name="value" type="String[]" default="{}">Массив имён кешей</attribute>
+                    </attributes>
+                    <example>@Cache({"users", "orders"})</example>
+                </annotation>
+            </file>
+            
+            <file name="CacheDemo.java">
+                <description>Пример использования аннотации @Cache</description>
+                <class name="CacheDemo">
+                    <annotations>
+                        <annotation type="Cache" value='["users", "orders"]'/>
+                    </annotations>
+                    <purpose>Демонстрационный класс, связанный с двумя кешами: "users" и "orders"</purpose>
+                </class>
+            </file>
+            
+            <file name="CacheHandler.java">
+                <description>Утилитный класс для обработки аннотации @Cache через рефлексию</description>
+                <class name="CacheHandler">
+                    <methods>
+                        <method name="printCache" static="true">
+                            <purpose>Выводит список имён кешей из аннотации @Cache</purpose>
+                            <parameters>
+                                <parameter name="cls" type="Class&lt;?&gt;">Класс для проверки</parameter>
+                            </parameters>
+                            <logic>
+                                <step>1. Получает аннотацию @Cache класса</step>
+                                <step>2. Если аннотация отсутствует или массив пуст → "Кеш пуст"</step>
+                                <step>3. Иначе выводит каждый элемент: "Кеш: {имя}"</step>
+                            </logic>
+                        </method>
+                    </methods>
+                </class>
+            </file>
+        </package>
+        
+        <!-- ========== Аннотация @Default ========== -->
+        <package name="default.annotations">
+            <file name="Default.java">
+                <description>Определяет аннотацию @Default для указания типа по умолчанию</description>
+                <annotation name="Default">
+                    <target>TYPE (класс), FIELD (поле)</target>
+                    <retention>RUNTIME (время выполнения)</retention>
+                    <purpose>Указывает тип по умолчанию для класса или поля</purpose>
+                    <attributes>
+                        <attribute name="value" type="Class&lt;?&gt;" required="true">Тип по умолчанию</attribute>
+                    </attributes>
+                    <example>@Default(String.class)</example>
+                </annotation>
+            </file>
+            
+            <file name="DefaultDemo.java">
+                <description>Пример использования аннотации @Default</description>
+                <class name="DefaultDemo">
+                    <annotations>
+                        <annotation type="Default" value="String.class"/>
+                    </annotations>
+                    <purpose>Демонстрационный класс с типом по умолчанию String</purpose>
+                </class>
+            </file>
+            
+            <file name="DefaultHandler.java">
+                <description>Утилитный класс для обработки аннотации @Default</description>
+                <class name="DefaultHandler">
+                    <methods>
+                        <method name="printDefault" static="true">
+                            <purpose>Выводит имя класса по умолчанию из аннотации @Default</purpose>
+                            <parameters>
+                                <parameter name="cls" type="Class&lt;?&gt;">Класс для проверки</parameter>
+                            </parameters>
+                            <logic>
+                                <step>1. Получает аннотацию @Default класса</step>
+                                <step>2. Если аннотация существует → "Default класс: {имя}"</step>
+                            </logic>
+                        </method>
+                    </methods>
+                </class>
+            </file>
+        </package>
+        
+        <!-- ========== Аннотация @Invoke ========== -->
+        <package name="invoke.annotations">
+            <file name="Invoke.java">
+                <description>Определяет аннотацию @Invoke для отметки методов</description>
+                <annotation name="Invoke">
+                    <target>METHOD (метод)</target>
+                    <retention>RUNTIME (время выполнения)</retention>
+                    <purpose>Отмечает метод для динамического вызова через рефлексию</purpose>
+                    <example>@Invoke</example>
+                </annotation>
+            </file>
+            
+            <file name="InvokeDemo.java">
+                <description>Пример использования аннотации @Invoke с рефлексивным вызовом</description>
+                <class name="InvokeDemo">
+                    <methods>
+                        <method name="hello">
+                            <annotations>
+                                <annotation type="Invoke"/>
+                            </annotations>
+                            <purpose>Выводит "Метод hello вызван"</purpose>
+                        </method>
+                        
+                        <method name="test">
+                            <purpose>Обычный метод без аннотации</purpose>
+                            <output>"Обычный метод"</output>
+                        </method>
+                        
+                        <method name="run" static="true">
+                            <purpose>Рефлексивно вызывает все методы объекта, отмеченные @Invoke</purpose>
+                            <parameters>
+                                <parameter name="obj" type="Object">Объект для проверки</parameter>
+                            </parameters>
+                            <logic>
+                                <step>1. Перебирает все методы класса объекта</step>
+                                <step>2. Если метод имеет аннотацию @Invoke → вызывает его рефлексивно</step>
+                            </logic>
+                        </method>
+                    </methods>
+                </class>
+            </file>
+        </package>
+        
+        <!-- ========== Аннотация @ToString ========== -->
+        <package name="tostring.annotations">
+            <enum name="Mode">
+                <description>Перечисление для аннотации @ToString</description>
+                <constants>
+                    <constant name="YES" value="Участвует в toString"/>
+                    <constant name="NO" value="Не участвует в toString"/>
+                </constants>
+            </enum>
+            
+            <file name="ToString.java">
+                <description>Определяет аннотацию @ToString для контроля генерации toString</description>
+                <annotation name="ToString">
+                    <target>TYPE (класс), FIELD (поле)</target>
+                    <retention>RUNTIME (время выполнения)</retention>
+                    <purpose>Управляет участием полей в генерации строкового представления</purpose>
+                    <attributes>
+                        <attribute name="value" type="Mode" default="YES">Режим участия</attribute>
+                    </attributes>
+                    <behavior>
+                        <class-level>Задаёт поведение по умолчанию для всех полей класса</class-level>
+                        <field-level>Переопределяет поведение для конкретного поля</field-level>
+                    </behavior>
+                </annotation>
+            </file>
+            
+            <file name="Person.java">
+                <description>Пример использования аннотации @ToString</description>
+                <class name="Person">
+                    <annotations>
+                        <annotation type="ToString" value="YES (на уровне класса)"/>
+                    </annotations>
+                    <fields>
+                        <field name="name" type="String" initial="Ivan">
+                            <description>Участвует в toString (по умолчанию)</description>
+                        </field>
+                        <field name="password" type="int" initial="1234">
+                            <annotations>
+                                <annotation type="ToString" value="NO"/>
+                            </annotations>
+                            <description>Не участвует в toString (явное указание)</description>
+                        </field>
+                        <field name="age" type="int" initial="20">
+                            <description>Участвует в toString (по умолчанию)</description>
+                        </field>
+                    </fields>
+                    <methods>
+                        <method name="buildToString">
+                            <purpose>Генерирует строковое представление объекта с использованием рефлексии</purpose>
+                            <return>String в формате "Person{поле=значение, ...}"</return>
+                            <logic>
+                                <step>1. Перебирает все поля класса</step>
+                                <step>2. Если поле имеет @ToString(Mode.YES) или аннотацию нет → добавляет в результат</step>
+                                <step>3. Если поле имеет @ToString(Mode.NO) → пропускает</step>
+                            </logic>
+                        </method>
+                    </methods>
+                </class>
+            </file>
+        </package>
+        
+        <!-- ========== Аннотация @Two ========== -->
+        <package name="two.annotations">
+            <file name="Two.java">
+                <description>Определяет аннотацию @Two с двумя атрибутами</description>
+                <annotation name="Two">
+                    <target>TYPE (класс)</target>
+                    <retention>RUNTIME (время выполнения)</retention>
+                    <purpose>Пример аннотации с двумя атрибутами разных типов</purpose>
+                    <attributes>
+                        <attribute name="first" type="String" required="true">Первый атрибут</attribute>
+                        <attribute name="second" type="int" required="true">Второй атрибут</attribute>
+                    </attributes>
+                    <example>@Two(first = "Hello", second = 10)</example>
+                </annotation>
+            </file>
+            
+            <file name="TwoDemo.java">
+                <description>Пример использования аннотации @Two</description>
+                <class name="TwoDemo">
+                    <annotations>
+                        <annotation type="Two" first="Hello" second="10"/>
+                    </annotations>
+                </class>
+            </file>
+            
+            <file name="TwoHandler.java">
+                <description>Утилитный класс для обработки аннотации @Two</description>
+                <class name="TwoHandler">
+                    <methods>
+                        <method name="printTwo" static="true">
+                            <purpose>Выводит значения атрибутов first и second аннотации @Two</purpose>
+                            <parameters>
+                                <parameter name="cls" type="Class&lt;?&gt;">Класс для проверки</parameter>
+                            </parameters>
+                            <logic>
+                                <step>1. Получает аннотацию @Two класса</step>
+                                <step>2. Если аннотация существует → выводит значения first и second</step>
+                            </logic>
+                        </method>
+                    </methods>
+                </class>
+            </file>
+        </package>
+        
+        <!-- ========== Аннотация @Validate ========== -->
+        <package name="validate.annotations">
+            <file name="Validate.java">
+                <description>Определяет аннотацию @Validate для указания типов валидации</description>
+                <annotation name="Validate">
+                    <target>TYPE (класс), ANNOTATION_TYPE (аннотация)</target>
+                    <retention>RUNTIME (время выполнения)</retention>
+                    <purpose>Объявляет типы классов для валидации</purpose>
+                    <attributes>
+                        <attribute name="value" type="Class&lt;?&gt;[]" required="true">Массив типов для валидации</attribute>
+                    </attributes>
+                    <example>@Validate({String.class, Integer.class})</example>
+                </annotation>
+            </file>
+            
+            <file name="ValidateDemo.java">
+                <description>Пример использования аннотации @Validate</description>
+                <class name="ValidateDemo">
+                    <annotations>
+                        <annotation type="Validate" value='[String.class, Integer.class]'/>
+                    </annotations>
+                    <purpose>Демонстрационный класс с типами String и Integer для валидации</purpose>
+                </class>
+            </file>
+            
+            <file name="ValidateHandler.java">
+                <description>Утилитный класс для обработки аннотации @Validate</description>
+                <class name="ValidateHandler">
+                    <methods>
+                        <method name="printValidate" static="true">
+                            <purpose>Выводит список типов для валидации из аннотации @Validate</purpose>
+                            <parameters>
+                                <parameter name="cls" type="Class&lt;?&gt;">Класс для проверки</parameter>
+                            </parameters>
+                            <logic>
+                                <step>1. Получает аннотацию @Validate класса</step>
+                                <step>2. Перебирает массив value и выводит "Проверяем: {имя_класса}"</step>
+                            </logic>
+                        </method>
+                    </methods>
+                </class>
+            </file>
+        </package>
+        
+    </java-packages>
+</documentation>
